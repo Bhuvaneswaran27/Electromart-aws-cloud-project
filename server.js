@@ -1,13 +1,13 @@
 const express = require("express");
 
 const productRoutes = require("./routes/products");
-
+const userRoutes = require("./routes/users");
 const app = express();
 
 app.use(express.json());
 
 app.use("/api/products", productRoutes);
-
+app.use("/api/users", userRoutes);
 app.get("/", (req, res) => {
     res.send("Welcome to ElectroMart");
 });
