@@ -15,7 +15,7 @@ app.use("/api/cart", cartRoutes);
 app.use("/api/orders", orderRoutes);
 app.use("/api/upload", uploadRoutes);
 app.get("/", (req, res) => {
-    res.send("Welcome to ElectroMart");
+    res.send("Welcome to ElectroMart - CI/CD Working");
 });
 
 const PORT = 3000;
