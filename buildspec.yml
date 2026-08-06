@@ -16,7 +16,8 @@ phases:
     commands:
       - echo Pushing Docker image...
       - docker push 610213206510.dkr.ecr.ap-south-1.amazonaws.com/electromart:latest
+      - printf '[{"name":"electromart","imageUri":"610213206510.dkr.ecr.ap-south-1.amazonaws.com/electromart:latest"}]' > imagedefinitions.json
 
 artifacts:
   files:
-    - '**/*'
+    - imagedefinitions.json
