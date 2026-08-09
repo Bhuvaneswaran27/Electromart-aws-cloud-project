@@ -1,2 +1,15 @@
 node_modules/
 .env
+node_modules/
+.env
+
+# Uploaded files
+uploads/*
+!uploads/.gitkeep
+
+# Logs
+*.log
+
+# OS files
+.DS_Store
+Thumbs.db
