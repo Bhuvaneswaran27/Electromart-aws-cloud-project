@@ -5,9 +5,9 @@ const pool = mysql.createPool({
     user: "admin",
     password: "RkQ5fPAe72d224W",
     database: "Electromart",
-    waitforConnections: true,
-    Connectionlimit: 10,
-    queuelimit: 0
+    waitForConnections: true,
+    connectionLimit: 10,
+    queueLimit: 0
 });
 
 pool.getConnection((err, connection) => {
@@ -19,4 +19,4 @@ pool.getConnection((err, connection) => {
     }
 });
 
-module.exports = Pool;
+module.exports = pool;
