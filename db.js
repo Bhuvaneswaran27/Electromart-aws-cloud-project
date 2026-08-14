@@ -10,6 +10,10 @@ const pool = mysql.createPool({
     queueLimit: 0
 });
 
+pool.on("error", (err) => {
+    console.error("MySQL pool error:", err);
+});
+
 pool.getConnection((err, connection) => {
     if (err) {
         console.log("Database connection failed:", err);
