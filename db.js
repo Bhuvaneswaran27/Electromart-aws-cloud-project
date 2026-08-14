@@ -1,20 +1,22 @@
 const mysql = require("mysql2");
 
-const connection = mysql.createConnection({
-    host: process.env.DB_HOST,
-    user: process.env.DB_USER,
-    password: process.env.DB_PASSWORD,
-    database: process.env.DB_NAME
+const pool = mysql.createPool({
+    host: "electromart-db.c7su62cgo0bo.ap-south-1.rds.amazonaws.com",
+    user: "admin",
+    password: "RkQ5fPAe72d224W",
+    database: "Electromart",
+    waitforConnections: true,
+    Connectionlimit: 10,
+    queuelimit: 0
 });
 
-connection.connect((err) => {
+pool.getconnection((err, connection) => {
     if (err) {
         console.log("Database connection failed:", err);
     } else {
         console.log("Connected to Amazon RDS");
+        connection.release();
     }
 });
 
-module.exports = connection;
-
-
+module.exports = Pool;
