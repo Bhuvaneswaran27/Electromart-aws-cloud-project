@@ -15,33 +15,43 @@ and is exposed through an Application Load Balancer.
 
 The Docker image is stored in Amazon ECR and deployed to Amazon ECS Fargate.
 
-## Architecture
+##  AWS Architecture
 
-                    GitHub
-                       |
-                       v
-                AWS CodePipeline
-                       |
-                       v
-                  AWS CodeBuild
-                       |
-                 Docker Build
-                       |
-                       v
-                  Amazon ECR
-                       |
-                       v
-              Amazon ECS Fargate
-                       |
-                       v
-          Application Load Balancer
-                       |
-                       v
-             ElectroMart API
-                       |
-                       v
-                 Amazon RDS
-                    MySQL
+```text
+Developer
+   │
+   ▼
+GitHub
+   │
+   ▼
+AWS CodePipeline
+   │
+   ▼
+AWS CodeBuild
+   │
+   ▼
+Amazon ECR
+   │
+   ▼
+Amazon ECS
+   │
+   ▼
+Application Load Balancer
+   │
+   ▼
+Node.js / Express Application
+   │
+   ├── JWT Authentication
+   ├── Products API
+   ├── Orders API
+   └── Cart API
+   │
+   ▼
+Amazon RDS (MySQL)
+   │
+   ▼
+Amazon CloudWatch
+   ```               
 
 **Technologies Used**
 
@@ -98,16 +108,16 @@ The Docker image is stored in Amazon ECR and deployed to Amazon ECS Fargate.
 
 ##  API Endpoints
 
-### Products
-
 ```text
-GET    /api/products
-POST   /api/products
-PUT    /api/products/:id
-DELETE /api/products/:id
+| Method | Endpoint | Description | Authentication |
+|---|---|---|---|
+| POST | `/api/users/register` | Register a new user | No |
+| POST | `/api/users/login` | User login and JWT generation | No |
+| GET | `/api/products` | Get products | JWT |
+| POST | `/api/products` | Create product | JWT |
+| GET | `/api/orders` | Get orders | JWT |
+| GET | `/api/cart` | Get cart | JWT |
 ```
-Additional API routes are implemented for users, carts, orders, and uploads.
-
 ## AWS Infrastructure
 ### Amazon ECS Fargate
 
@@ -175,6 +185,16 @@ Application Load Balancer
     v
 ElectroMart Application
 ```
+
+1. Developer pushes code to GitHub.
+2. CodePipeline detects the change.
+3. CodeBuild builds the Docker image.
+4. Docker image is pushed to Amazon ECR.
+5. ECS deploys the new task definition.
+6. Application runs behind an Application Load Balancer.
+7. CloudWatch collects application logs.
+8. The Node.js application connects to Amazon RDS MySQL.
+
 Whenever new code is pushed to GitHub, the pipeline can automatically
 execute the build and deployment process.
 
@@ -257,6 +277,9 @@ Connected to Amazon RDS
 
 ### ALB
 ![Application Load Balancer](Screenshots/alb-homepage.png)
+
+### Amazon RDS
+![RDS](Screenshots/rds.png)
 
 ### CloudWatch
 ![CloudWatch Logs](Screenshots/cloudwatch.png)
