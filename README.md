@@ -96,7 +96,7 @@ The Docker image is stored in Amazon ECR and deployed to Amazon ECS Fargate.
 - Automated CI/CD deployment
 
 
-## 🔌 API Endpoints
+##  API Endpoints
 
 ### Products
 
@@ -178,7 +178,7 @@ ElectroMart Application
 Whenever new code is pushed to GitHub, the pipeline can automatically
 execute the build and deployment process.
 
-## 🐳 Docker
+## Docker
 
 The application is packaged into a Docker image using the project's
 Dockerfile.
@@ -200,7 +200,7 @@ AWS CodeBuild uses **buildspec.yml** to:
 3. Tag the image.
 4. Push the image to Amazon ECR.
 
-## 📁 Project Structure
+##  Project Structure
 ```text
 Electromart-aws-cloud-project/
 │
@@ -241,6 +241,29 @@ Example application messages include:
 ElectroMart Server Running on Port 3000
 Connected to Amazon RDS
 ```
+## Screenshots
+
+### CodePipeline
+![CodePipeline](Screenshots/codepipeline.png)
+
+### CodeBuild
+![CodeBuild](Screenshots/codebuild.png)
+
+### ECR
+![Amazon ECR](Screenshots/ecr.png)
+
+### ECS Deployment
+![ECS Deployment](Screenshots/ecs-deployment.png)
+
+### ALB
+![Application Load Balancer](Screenshots/alb-homepage.png)
+
+### CloudWatch
+![CloudWatch Logs](Screenshots/cloudwatch.png)
+
+### Products API
+![Products API](Screenshots/api-products.png)
+
 ##  Deployment Verification
 
 The deployment was verified using:
