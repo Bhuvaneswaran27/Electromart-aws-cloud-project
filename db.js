@@ -1,9 +1,9 @@
 const mysql = require("mysql2");
 
 const pool = mysql.createPool({
-    host: "electromart-db.c7su62cgo0bo.ap-south-1.rds.amazonaws.com",
-    user: "admin",
-    password: "RkQ5fPAe72d224W",
+    host: process.env.DB_HOST,
+    user: process.env.DB_USER,
+    password: process.env.DB_PASS,
     database: "Electromart",
     waitForConnections: true,
     connectionLimit: 10,
